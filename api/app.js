@@ -5,7 +5,7 @@ const app = express();
 
 
 app.use('/*', (req, res ) => {
-    sendFile(res, pathToIndex)
+    response.sendFile(pathToIndex)
 
 
 })
