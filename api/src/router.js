@@ -3,11 +3,11 @@ const multer = require('multer');
 const express = require('express');
 const { Router } = require('express');
 const { response } = require('../app');
-
+const router = Router();
 
 router = require(express)
 
-const router = Router();
+
 
 const filename = ((request, file, callback) => {
     callback(null, file.originalName);
@@ -18,7 +18,7 @@ const storage = multer.diskStorage({
     filename,
 
 })
-const fileFilter = (request, file, calllback) => {
+const fileFilter = (request, file, callback) => {
     if (file.mimetype !== 'image/png') {
         request.fileValidationError = 'Wrong File Type';
         callback(null, false, new Error('Wrong File Type'));
@@ -27,7 +27,7 @@ const fileFilter = (request, file, calllback) => {
     }
 };
 
-const upload = multer ({
+const upload = multer({
     fileFilter,
     storage,
 });
